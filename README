@@ -1,0 +1,28 @@
+Boston University Operating Systems Course
+
+I delayed putting up this GitHub repository to prevent cheating from other students basically taking my completed code. The course is no longer offered so I think it's safe now, but just in case I am not putting the original course number so it will be more difficult to Google.
+
+This assignment was to create an in-memory filesystem (ramdisk).
+The module architecture was mostly given to us (module/ramdisk.h and module/ramdisk_module.c).
+The following method stubs were for us to implement:
+
+int ioctl_rd_creat(int deviceFd, char* pathname);
+int ioctl_rd_mkdir(int deviceFd, char* pathname);
+int ioctl_rd_open(int deviceFd, char* pathname);
+int ioctl_rd_close(int deviceFd, int fd);
+int ioctl_rd_read(int deviceFd, int fd, char** address, int num_bytes);
+int ioctl_rd_write(int deviceFd, int fd, char* address, int num_bytes);
+int ioctl_rd_lseek(int deviceFd, int fd, int offset);
+int ioctl_rd_unlink(int deviceFd, char* pathname);
+int ioctl_rd_readdir(int deviceFd, int fd, char** address);
+int ioctl_rd_sync(int deviceFd);
+int ioctl_rd_restore(int deviceFd);
+
+The header file is src/ramdisk_ioctl.h and the implementation is at src/ramdisk_ioctl.c.
+
+A test suite was also required to demonstrate that all the functionality was working.
+You can find the test suite at src/ramdisk_test_process.c
+
+To compile, first run make in the module/ directory. Then run script.sh to insert the module and compile the code in the src/ directory. It will generate an executable whose name is test that you can run to verify the functionality.
+
+This code was designed to compile on a specifically given virtual machine running BU Linux and the Linux 2.6.5 kernel, so your mileage may vary. I haven't attempted to compile this on any other system since turning in the project. However, I am happy to report that my implementation is fully functioning and I got full points for the assignment!
